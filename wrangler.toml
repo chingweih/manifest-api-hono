@@ -1,0 +1,14 @@
+name = "manifest-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-23"
+minify = true
+
+compatibility_flags = [ "nodejs_compat" ]
+
+workers_dev = false
+routes = [
+  { pattern = "manifest.ethanhuang.me", custom_domain = true }
+]
+
+[observability.logs]
+enabled = true
