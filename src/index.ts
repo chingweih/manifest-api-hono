@@ -43,7 +43,7 @@ app.get(
   zValidator(
     'query',
     z.object({
-      name: z.string(),
+      name: z.string().transform((name) => decodeURIComponent(name)),
       color: z.string().optional(),
       'bg-color': z.string().optional(),
       icon: z.string().optional(),
