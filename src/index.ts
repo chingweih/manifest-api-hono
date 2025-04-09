@@ -46,7 +46,7 @@ app.get(
       name: z.string(),
       color: z.string().optional(),
       'bg-color': z.string().optional(),
-      icon: z.array(z.string()).optional(),
+      icon: z.string().optional(),
     })
   ),
   (c) => {
@@ -56,8 +56,14 @@ app.get(
       name: query.name,
       short_name: query.name,
       display: 'standalone',
-      icons:
-        query.icon?.map((src) => ({ src, purpose: 'maskable' })) ?? undefined,
+      icons: query.icon
+        ? [
+            {
+              src: query.icon,
+              purpose: 'maskable',
+            },
+          ]
+        : undefined,
       background_color: query['bg-color'] ?? query.color ?? undefined,
       theme_color: query.color ?? undefined,
     }
